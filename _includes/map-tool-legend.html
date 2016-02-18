@@ -1,0 +1,30 @@
+<div>
+  <hr />
+  <button id="showTools" type="button" class="btn btn-default btn-xs btn-block">Show Map Tools Legend</button>
+  <button id="hideTools" type="button" class="btn btn-default btn-xs btn-block" style="display:none;">Hide Map Tools Legend</button>
+  <div class="toolLegend" style="display:none;">
+    <hr />
+    <div class="list-group" style="text-align:left;">
+      <li class="list-group-item"><i class='fa fa-bars fa-fw fa-lg'></i> Open Sidebar</li>
+      <li class="list-group-item"><i class='fa fa-exchange fa-fw fa-lg'></i> Toggle Address Search</li>
+      <li class="list-group-item"><img src="{{ site.baseurl }}/assets/images/fullscreen-img.png" style="padding:0 1px;width:22px;"></img> Fullscreen</li>
+      <li class="list-group-item"><i class='fa fa-globe fa-fw fa-lg'></i> Default Map Extent</li>
+      <li class="list-group-item"><i class='fa fa-map-marker fa-fw fa-lg'></i> Show/Follow Your Location</li>
+      <li class="list-group-item"><i class='fa fa-cogs fa-fw fa-lg'></i> Toggle Map Tools (Mobile Only)</li>
+      <li class="list-group-item"><img src="{{ site.baseurl }}/assets/cssjs/images/layers-bl.png" style="padding:0 1px;width:22px;"></img> Toggle Map Layers</li>
+    </div>
+  </div>
+  <hr />
+</div>
+<script>
+$("#showTools").click(function() {
+  $(".toolLegend").toggle();
+  $("#showTools").toggle();
+  $("#hideTools").toggle();
+});
+$("#hideTools").click(function() {
+  $(".toolLegend").toggle();
+  $("#showTools").toggle();
+  $("#hideTools").toggle();
+});
+</script>
