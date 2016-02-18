@@ -1,0 +1,631 @@
+<!--head-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!--fonts and jquery-->
+  <link href='//fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400italic,400,800,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!--Font Awesome and Bootstrap CSS -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <!--map plugins-->
+  <!--Mapping via LeafletJS updated 03-13-2015 -->
+  <link rel="stylesheet" href="assets/leaflet/leaflet/leaflet.0.7.7.css" />
+  <script src="assets/leaflet/leaflet/leaflet.0.7.7.js"></script>
+  <!--Home Button ie Default Extent-->
+  <link rel="stylesheet" href="assets/default-extent/leaflet.defaultextent.css" />
+  <script src="assets/default-extent/leaflet.defaultextent.js"></script>
+  <!--Easy Print -->
+  <link rel="stylesheet" href="assets/easy-print/easyPrint.css" />
+  <script src="assets/easy-print/leaflet.easyPrint.js"></script>
+  <!--locate control from source -->
+  <link rel="stylesheet" href="assets/control-locate/L.Control.Locate.min.css" />
+  <script src="assets/control-locate/L.Control.Locate.min.js"></script>
+  <!--Leaflet Hash via Mapbox CDN-->
+  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
+  <!--Google Custom Map -->
+  <script src="https://maps.google.com/maps/api/js?v=3"></script>
+  <!-- Leaflet Omnivore Plugin GeoJson KML Etc -->
+  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
+  <!-- leaflet search -->
+  <link rel="stylesheet" href="assets/search/leaflet-search/leaflet-search.min.css" />
+  <script src="assets/search/leaflet-search/leaflet-search.src.js"></script>
+  <!-- Leaflet Easy button Updated Dec 2015-->
+  <link rel="stylesheet" href="assets/easy-button/easy-button.css" />
+  <script src="assets/easy-button/easy-button.js"></script>
+  <!--Leaflet sidebar v1 aka menu -->
+  <link rel="stylesheet" href="assets/sidebar/L.Control.Sidebar.css" />
+  <script src="assets/sidebar/L.Control.Sidebar.js"></script>
+  <!-- leaflet loading and leaflet-spin works with leaflet ajax and map tiles -->
+  <link rel="stylesheet" href="assets/loading/Control.Loading.css" />
+  <script src="assets/loading/Control.Loading.js"></script>
+  <script src="assets/spin/spin.js"></script>
+  <script src="assets/spin/leaflet.spin.js"></script>
+  <script src="assets/google/google.js"></script>
+  <script src="assets/google/gglegrey.js"></script>
+  <!--Mapbox fullscreen standalone js added in ovrdc-toolbar-->
+  <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+  <!--OVRDC Custom Styles-->
+  <link rel="stylesheet" href="assets/ovrdc-css/ovrdc-style.css" />
+  <link rel="stylesheet" href="assets/ovrdc-css/modern-ui.css" />
+  <!--End Leaflet Plugins-->
+  <!--End Map CSS and JS-->
+  <!--end plugins-->
+</head>
+<style>
+  * {
+    font-family: "Open Sans", sans-serif;
+  }
+</style>
+
+<body>
+  <!--GeoJson Tile Scripts-->
+  <script src="assets/geojson-tiles/geojson-vt-dev.js"></script>
+  <script src="assets/geojson-tiles/L.CanvasTiles.js"></script>
+  <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-pip/v0.1.0/leaflet-pip.min.js'></script>
+  <!--Loading Screen-->
+  <div class="blank">
+    <h2 class="animate-flicker" style="text-align:center;margin-top:50px;">Loading...</h2></div>
+  <!--Map-->
+  <div id='map'>
+    <div id="sidebar">
+      <h2 style="font-family:Archivo Black, sans-serif;">{{ page.title }}</h2>
+      <hr /> {{ page.description }}
+      <hr />
+      <strong>{{ page.notes }}</strong>
+      <hr />
+      <em>{{ page.legal }}</em> {% include map-tool-legend.html %}
+      <h6><a href='{{ site.baseurl }}' target='_blank' style='text-decoration:none;'>{{ site.name }}</a> | Map data updated {{ page.date | date: "%m/%-d/%Y" }}</h6>
+    </div>
+  </div>
+  <script>
+    var map = L.map('map', {
+      zoomControl: false,
+      maxZoom: 18,
+      minZoom: 10,
+      touchZoom: false,
+      zoomAnimationThreshold: 2,
+      doubleClickZoom: false
+    }).setView([{
+      {
+        page.center
+      }
+    }], {
+      {
+        page.zoom
+      }
+    });
+    map.spin(true);
+    //--begin map-tiles Most work via ssl--//
+    //--Unused Map Tiles--//
+    /*
+    var esrigray = L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+      maxNativeZoom: 16,
+      maxZoom: 19,
+    });
+
+    var ogrip = L.esri.imageMapLayer({
+      url: '//geo.oit.ohio.gov/arcgis/rest/services/OSIP/osip_best_avail_1ft/ImageServer',
+    });
+
+    var ogripTiles = L.esri.tiledMapLayer({
+      url:'//gis5.oit.ohio.gov/ArcGIS/rest/services/WM_OSIP_II/MapServer/3',
+    });
+
+    var ggleroadmap = new L.Google('ROADMAP', {
+      mapOptions: {
+        styles: style,
+      },
+      maxZoom: 22,
+      maxNativeZoom: 20,
+      });
+
+
+    var ggleterrain = new L.Google('TERRAIN', {
+      maxZoom: 20,
+      maxNativeZoom: 20,
+    });
+
+    var ggle = new L.Google('HYBRID', {
+      maxZoom: 20,
+      maxNativeZoom: 20,
+    });
+
+    var stamentoner = new L.tileLayer.provider('Stamen.Toner');
+    var stamentonerlight = new L.tileLayer.provider('Stamen.TonerLite');
+    var watercolor = L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png', {
+    	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    	subdomains: 'abcd',
+    	maxNativeZoom: 14,
+    	maxZoom: 17,
+    	ext: 'png',
+     });
+    */
+    //--End Unused Tiles--//
+
+    var osm = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxNativeZoom: 19,
+      maxZoom: 22,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    });
+
+    var cdblight = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 20,
+      maxNativeZoom: 18,
+    });
+
+    var cdbdark = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 20,
+      maxNativeZoom: 18,
+    });
+    var thundertransport = L.tileLayer('https://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19,
+    });
+
+    var esritopo = L.tileLayer('//server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community',
+      maxZoom: 20,
+      maxNativeZoom: 18,
+    });
+
+    var ortho = L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?access_token={{ site.mapboxid }}', {
+      attribution: '<a href="https://mapbox.com/about/maps/">MapBox</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      subdomains: 'abcd',
+      maxZoom: 20,
+      maxNativeZoom: 18,
+    });
+
+    var streets = osm;
+    var topo = esritopo;
+    var light = cdblight;
+    var dark = cdbdark;
+    var transit = thundertransport;
+    var basemaps = {
+      "<div class='layers-control-img'><img src='assets/images/layer-control-images/osm-streets.png'></div> Streets": osm,
+      "<div class='layers-control-img'><img src='assets/images/layer-control-images/mapbox-ortho.png'></div> Satellite": ortho,
+      "<div class='layers-control-img'><img src='assets/images/layer-control-images/esri-topo.png'></div> Topography": esritopo,
+      "<div class='layers-control-img'><img src='assets/images/layer-control-images/transit.png'></div> Transit": transit,
+      "<div class='layers-control-img'><img src='assets/images/layer-control-images/cdb-light.png'></div> Grayscale": cdblight,
+      "<div class='layers-control-img'><img src='assets/images/layer-control-images/cdb-dark.png'></div> Dark Matter": cdbdark,
+    };
+
+    //--show google imagery at higher zoom levels
+    map.on('zoomend', function() {
+      if (map.getZoom() > 18 && map.hasLayer(ortho)) {
+        map.removeLayer(ortho);
+        map.addLayer(ggle);
+      }
+
+      if (map.getZoom() < 19 && map.hasLayer(ggle)) {
+        map.removeLayer(ggle);
+        map.addLayer(ortho);
+      }
+    });
+
+    map.on('baselayerchange', function() {
+      if (map.getZoom() > 18 && map.hasLayer(ggle)) {
+        map.removeLayer(ggle);
+      }
+    });
+
+    var layerControl = L.control.layers(basemaps, null, {
+      position: 'topright',
+      autoZIndex: true
+    }).addTo(map);
+
+    //--end map-tiles
+
+    console.log('start map toolbar');
+    //OVRDC Modern UI Toolbar
+    //OVRDC New marker
+    var ovrdcMarker = L.icon({
+      iconUrl: 'assets/images/ovrdc-marker.png',
+      //shadowUrl: 'leaf-shadow.png',
+      iconSize: [48, 48], // size of the icon
+      //shadowSize:   [50, 64], // size of the shadow
+      iconAnchor: [24, 42], // point of the icon which will correspond to marker's location - half the width and height of icon
+      //shadowAnchor: [4, 62],  // the same for the shadow
+      popupAnchor: [0, -42] // point from which the popup should open relative to the iconAnchor
+    });
+    //end marker
+    var overlays;
+    var sidebar = L.control.sidebar('sidebar', {
+      autoPan: false,
+      closeButton: false
+    });
+    sidebar.addTo(map);
+
+    //Leaflet Search with OSM Geocode
+    var osmsearch = new L.Control.Search({
+      url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+      jsonpParam: 'json_callback',
+      propertyName: 'display_name',
+      propertyLoc: ['lat', 'lon'],
+      circleLocation: false,
+      autoType: false,
+      autoCollapse: false,
+      minLength: 2,
+      zoom: 13,
+      textPlaceholder: 'Search Addresses',
+      collapsed: false
+    });
+    osmsearch.addTo(map);
+    var circle;
+    var marker;
+    osmsearch.on('search_locationfound', function(e) {
+      if (marker) {
+        map.removeLayer(marker);
+      }
+      var name = e.display_name;
+      marker = new L.marker([e.latlng.lat, e.latlng.lng], {
+        icon: ovrdcMarker
+      }).addTo(map);
+    });
+
+    //Toggle OSM Search and Feature Search - remove if no feature search
+    var hash = L.hash(map);
+    var gpsLocate = L.control.locate({
+      follow: true,
+      locateOptions: {
+        enableHighAccuracy: true
+      }
+    });
+    //gpsLocate.addTo(map);
+    var homeExtent = L.control.defaultExtent({});
+    //homeExtent.addTo(map);
+    var fullscreen = L.control.fullscreen();
+
+    var globalsearchToggle = new L.easyButton({
+      states: [{
+        stateName: 'show',
+        icon: 'fa-exchange fa-lg',
+        title: 'Search Addresses',
+        onClick: function(btn, map) {
+          osmsearch.addTo(map);
+          btn.state('hide');
+        }
+      }, {
+        stateName: 'hide',
+        icon: 'fa-exchange fa-border fa-lg',
+        title: 'Search Features',
+        onClick: function(btn, map) {
+          map.removeControl(osmsearch);
+          btn.state('show');
+        }
+      }]
+    });
+    //globalsearchToggle.addTo(map);
+
+    var loading = L.Control.loading({
+      position: 'topright'
+    }).addTo(map);
+    var sidebarToggle = L.easyButton({
+      states: [{
+        stateName: 'open-sidebar', // name the state
+        icon: 'fa-bars fa-lg', // and define it's properties
+        title: 'Show Sidebar', // like it's title
+        onClick: function(btn, map) { // and it's callback
+          sidebar.show();
+          btn.state('close-sidebar'); // change state on click!
+        }
+      }, {
+        stateName: 'close-sidebar',
+        icon: 'fa-times fa-2x',
+        title: 'Hide Sidebar',
+        onClick: function(btn, map) {
+          sidebar.hide();
+          btn.state('open-sidebar');
+        }
+      }],
+      id: 'menu',
+    });
+    var stogglebar = L.easyBar([sidebarToggle], {
+      id: 'toggle'
+    }).addTo(map);
+    var leafletprint = L.easyPrint();
+    //end toolbar
+    sidebar.on('hide', function() {
+      sidebarToggle.state('open-sidebar');
+    });
+    sidebar.on('show', function() {
+      sidebarToggle.state('close-sidebar');
+    });
+    //mobile toolbar menu
+    //--tools toggle on small screens
+    var toolshidden = false;
+    var mobilescreen = false;
+    var tools = L.easyButton({
+      states: [{
+        stateName: 'show-tools', // name the state
+        icon: 'fa-cogs fa-lg', // and define it's properties
+        title: 'Show Map Tools', // like it's title
+        onClick: function(btn, map) { // and it's callback
+          leafletprint.addTo(map);
+          gpsLocate.addTo(map);
+          homeExtent.addTo(map);
+          fullscreen.addTo(map);
+
+          globalsearchToggle.addTo(map);
+
+          btn.state('hide-tools'); // change state on click!
+          toolshidden = false;
+          //console.log(toolshidden + ' state changed to hideTools');
+        }
+      }, {
+        stateName: 'hide-tools',
+        icon: 'fa-cogs fa-border fa-lg',
+        title: 'Hide Map Tools',
+        onClick: function(btn, map) {
+          map.removeControl(leafletprint);
+          map.removeControl(gpsLocate);
+          map.removeControl(homeExtent);
+          map.removeControl(fullscreen);
+
+          map.removeControl(globalsearchToggle);
+
+          btn.state('show-tools');
+          toolshidden = true;
+          //console.log(toolshidden+ ' state changed to showTools');
+        }
+      }],
+      id: 'tools',
+    });
+    console.log('tools loaded');
+    var w = window.innerWidth;
+    console.log('screen width: ' + w);
+    if (w < 481) {
+      tools.addTo(map);
+      toolshidden = true;
+      mobilescreen = true;
+    } else {
+      leafletprint.addTo(map);
+      gpsLocate.addTo(map);
+      homeExtent.addTo(map);
+      fullscreen.addTo(map);
+      globalsearchToggle.addTo(map);
+      toolshidden = false;
+    }
+    window.onresize = function() {
+      if (toolshidden === true && window.innerWidth > 480 && mobilescreen === true) {
+        leafletprint.addTo(map);
+        gpsLocate.addTo(map);
+        homeExtent.addTo(map);
+        fullscreen.addTo(map);
+        globalsearchToggle.addTo(map);
+        map.removeControl(tools);
+        toolshidden = false;
+        mobilescreen = false;
+      } else if (toolshidden === false && mobilescreen === true && window.innerWidth > 481) {
+        tools.state('show-tools');
+        mobilescreen = false;
+        map.removeControl(tools);
+      } else if (toolshidden === false && window.innerWidth < 481 && mobilescreen === false) {
+        map.removeControl(leafletprint);
+        map.removeControl(gpsLocate);
+        map.removeControl(homeExtent);
+        map.removeControl(fullscreen);
+        map.removeControl(globalsearchToggle);
+        tools.addTo(map);
+        toolshidden = true;
+        mobilescreen = true;
+      } else {}
+    };
+    //--end tools toggle
+    /*Attribution Toggle*/
+    /*
+    var toggleAttribution = L.Control.extend({
+      options: {position: 'bottomright'},
+
+      onAdd: function (map) {
+              this._div = L.DomUtil.create('button', 'btn btn-link');
+              this._div.innerHTML = "Leaflet | Map Tiles" ;
+              L.DomEvent.on(this._div, "click", this._click );
+              return this._div;
+      },
+
+      _click: function(e){
+        L.DomEvent.stop(e);
+        x = document.getElementsByClassName("leaflet-control-attribution")[0];
+        x.style.display = x.style.display === 'block' ? '' : 'block';
+      },
+
+    });
+    map.addControl(new toggleAttribution());
+    */
+    //Close Layer Control on Layer Change
+    //Close Layer Control on Layer Change on mobile
+    map.on('baselayerchange', function() {
+      if (L.Browser.mobile) {
+        map.on('baselayerchange', function() {
+          setTimeout(function() {
+            $(".leaflet-control-layers").removeClass("leaflet-control-layers-expanded");
+          }, 5000);
+        });
+      }
+    });
+    //end mobile tools menu
+    //end OVRDC Modern UI Toolbar
+
+    var customZoom = L.control.zoom({
+      position: 'topleft'
+    }).addTo(map);
+    ortho.addTo(map);
+    sidebar.on('show', function() {
+      map.removeControl(customZoom)
+    });
+    sidebar.on('hide', function() {
+      customZoom.addTo(map);
+    });
+    var parcels = L.geoJson();
+    var tileData = omnivore.topojson("data/{{ page.data }}", null, parcels);
+    var search;
+    tileData.on('ready', function() {
+      console.log('parcel data ready');
+      map.fitBounds(parcels.getBounds());
+      $(".blank").fadeOut();
+      map.spin(false);
+      setTimeout(function() {
+        sidebar.show()
+      }, 700);
+      //initiate search after parcel data has loaded
+      search = new L.Control.Search({
+        layer: parcels,
+        propertyName: 'index',
+        initial: false,
+        zoom: 17,
+        collapsed: false,
+        textPlaceholder: 'Search by Parcel ID',
+        minLength: 4
+      }).addTo(map);
+      search.on('search_locationfound', function(e) {
+        search.collapse();
+        setTimeout(function() {
+          map.fire('click', {
+            latlng: e.latlng
+          });
+        }, 200);
+      });
+      //--end search--//
+      //--start geojson-vt map tiles--//
+      //--interaction on the underlying polygon not drawn but represented by the tiles - they draw better--//
+      var highlight;
+      map.on('click', function(e) {
+        if (highlight) {
+          map.removeLayer(highlight)
+        }
+        var x = e.latlng.lng;
+        var y = e.latlng.lat;
+        var layerData = leafletPip.pointInLayer([x, y], parcels, true);
+        if (!layerData[0]) {
+          console.log('nothing to see here')
+        } else {
+          map.spin(true);
+          var highlightIndex = layerData[0].feature.properties.index;
+          highlight = new L.geoJson(data, {
+            filter: function(feature, layer) {
+              return feature.properties.index == highlightIndex
+            },
+            style: {
+              color: 'deepskyblue',
+              fillColor: 'deepskyblue'
+            }
+          }).addTo(map);
+          var attributes = highlightIndex.split('{{ page.split }}', {{ page.indexnumber }});
+          //--adjust here if you have more than two fields in your index field or someone can write a code that just lists them all--//
+          var pin = attributes[0];
+          var deed = attributes[1];
+          var popup = 'Parcel ID: ' + pin + '<hr>Deed: ' + deed;
+          map.on('popupopen', function() {
+            map.spin(false)
+          });
+          map.openPopup(popup, e.latlng);
+          map.on('popupclose', function() {
+            map.removeLayer(highlight)
+          });
+        }
+      });
+      //end point in polygon
+      //geojson-vt
+      var tileOptions = {
+        maxZoom: 20, // max zoom to preserve detail on
+        tolerance: 7, // 5 simplification tolerance (higher means simpler)
+        extent: 4096, //4096, // 4096 tile extent (both width and height)
+        buffer: 64, // 64 default 64tile buffer on each side
+        debug: 0, // logging level (0 to disable, 1 or 2)
+        indexMaxZoom: 20, // 0 max zoom in the initial tile index
+        indexMaxPoints: 100000, // 100000 max number of points per tile in the index
+      };
+      var data = parcels.toGeoJSON();
+      var tileIndex = geojsonvt(data, tileOptions);
+      //take json output from geojson-vt and draw it with the now depricated (in leaflet-beta) L.canvasTiles and code from here - http://blog.sumbera.com/2015/05/31/geojson-vt-on-leaflet/
+      var tileLayer = L.canvasTiles().params({
+        debug: false,
+        padding: 50
+      }).drawing(drawingOnCanvas);
+      var pad = 0;
+      tileLayer.addTo(map);
+      tileLayer.setZIndex(10);
+
+      function drawingOnCanvas(canvasOverlay, params) {
+
+        var bounds = params.bounds;
+        params.tilePoint.z = params.zoom;
+
+        var ctx = params.canvas.getContext('2d');
+        ctx.globalCompositeOperation = 'source-over';
+
+
+        //console.log('getting tile z' + params.tilePoint.z + '-' + params.tilePoint.x + '-' + params.tilePoint.y);
+
+        var tile = tileIndex.getTile(params.tilePoint.z, params.tilePoint.x, params.tilePoint.y);
+        if (!tile) {
+          //console.log('tile empty');
+          return;
+        }
+
+        ctx.clearRect(0, 0, params.canvas.width, params.canvas.height);
+
+        var features = tile.features;
+
+        ctx.strokeStyle = '{{ page.color }}';
+
+
+        for (var i = 0; i < features.length; i++) {
+          var feature = features[i],
+            type = feature.type;
+
+          ctx.fillStyle = feature.tags.color ? feature.tags.color : 'transparent';
+          ctx.beginPath();
+
+          for (var j = 0; j < feature.geometry.length; j++) {
+            var geom = feature.geometry[j];
+
+            if (type === 1) {
+              ctx.arc(geom[0] * ratio + pad, geom[1] * ratio + pad, 2, 0, 2 * Math.PI, false);
+              continue;
+            }
+
+            for (var k = 0; k < geom.length; k++) {
+              var p = geom[k];
+              var extent = 4096;
+
+              var x = p[0] / extent * 256;
+              var y = p[1] / extent * 256;
+              if (k) ctx.lineTo(x + pad, y + pad);
+              else ctx.moveTo(x + pad, y + pad);
+            }
+          }
+
+          if (type === 3 || type === 1) ctx.fill();
+          ctx.stroke();
+        }
+
+      };
+
+    });
+  </script>
+</body>
+</body>
+<footer>
+  <!--google analytics-->
+  {% include analytics.js %}
+</footer>
+
+</html>
+

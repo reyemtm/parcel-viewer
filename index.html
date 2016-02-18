@@ -1,6 +1,14 @@
 ---
-layout: default
+layout: map
+title: Parcel Viewer
 data: parcels.topojson
 zoom: 12
 center: "39.0788,-83.0752"
+description: "This map demonstrates the capability of <a href="http://leafletjs.com/" target="blank">Leaflet</a> to render thousands of polygons using <a href="https://www.mapbox.com/blog/introducing-geojson-vt/" target="_blank">GeoJson Tiles</a> on both desktop and mobile devices. Rendering, search and identify are handled by the browser, so there is no need for GeoServer/ArcGIS Server, etc., to push data to the client. The original shapefile was converted to topojson using <a href="http://www.mapshaper.org/" target="_blank">mapshaper</a>, and the geojson-vt plugin provides some simplification. To identify the underlying polygons, the <a href="https://www.mapbox.com/mapbox.js/example/v1.0.0/point-in-polygon/" target="_blank">point in polygon</a> plugin is used. Parcels with null parcel and owner fields have been removed."
+notes: "Use zoom controls to navigate the map. Pinch & zoom and double tap to zoom have been disabled."
+legal: The parcels shown are for demonstration purposes only and are not intended to represent legal boundaries and/or current ownership.
+split: " | "
+indexnumber: 2
+date: 2016-02-18
+color: orange
 ---
