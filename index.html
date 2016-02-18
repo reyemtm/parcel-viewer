@@ -10,26 +10,23 @@
 <link href='https://fonts.googleapis.com/css?family=Archivo+Narrow:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<!--Font Awesome CDN and Bootstrap CSS -->
+<!--Font Awesome and Bootstrap CSS -->
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 <!--map plugins-->
-<!--Begin Map CSS and JS-->
 <!--Mapping via LeafletJS updated 03-13-2015 -->
-<link rel="stylesheet" href="/assets/cssjs/leaflet/leaflet.0.7.7.css" />
-<script src="/assets/cssjs/leaflet/leaflet.0.7.7.js"></script>
-<!--Leaflet Plugins-->
+<link rel="stylesheet" href="assets/cssjs/leaflet/leaflet.0.7.7.css" />
+<script src="assets/cssjs/leaflet/leaflet.0.7.7.js"></script>
 <!--Home Button ie Default Extent-->
-<link rel="stylesheet" href="/assets/cssjs/leaflet.defaultextent.css" />
-<script src="/assets/cssjs/leaflet.defaultextent.js"></script>
-<!--Easy Print Plugin Does not work well -->
-<link rel="stylesheet" href="/assets/cssjs/easy-print/easyPrint.css" />
-<script src="/assets/cssjs/easy-print/leaflet.easyPrint.js"></script>
-<!--script src="/assets/cssjs/jQuery.print.js"></script-->
+<link rel="stylesheet" href="assets/cssjs/leaflet.defaultextent.css" />
+<script src="assets/cssjs/leaflet.defaultextent.js"></script>
+<!--Easy Print -->
+<link rel="stylesheet" href="assets/cssjs/easy-print/easyPrint.css" />
+<script src="assets/cssjs/easy-print/leaflet.easyPrint.js"></script>
 <!--locate control from source -->
-<link rel="stylesheet" href="/assets/cssjs/L.Control.Locate.min.css" />
-<script src="/assets/cssjs/L.Control.Locate.min.js"></script>
+<link rel="stylesheet" href="assets/cssjs/L.Control.Locate.min.css" />
+<script src="assets/cssjs/L.Control.Locate.min.js"></script>
 <!--Leaflet Hash via Mapbox CDN-->
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-hash/v0.2.1/leaflet-hash.js'></script>
 <!--Google Custom Map -->
@@ -37,88 +34,54 @@
 <!-- Leaflet Omnivore Plugin GeoJson KML Etc -->
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.2.0/leaflet-omnivore.min.js'></script>
 <!-- leaflet ajax geojson loader -->
-<script src="/assets/cssjs/leaflet.ajax.min.js"></script>
+<script src="assets/cssjs/leaflet.ajax.min.js"></script>
 <!-- leaflet search -->
-<link rel="stylesheet" href="/assets/cssjs/leaflet-search/leaflet-search.min.css" />
-<script src="/assets/cssjs/leaflet-search/leaflet-search.src.js"></script>
+<link rel="stylesheet" href="assets/cssjs/leaflet-search/leaflet-search.min.css" />
+<script src="assets/cssjs/leaflet-search/leaflet-search.src.js"></script>
 <!--leaflet providers simplify adding tiled basemaps -->
-<script src="/assets/cssjs/leaflet-providers.js"></script>
+<script src="assets/cssjs/leaflet-providers.js"></script>
 <!-- Leaflet Easy button Updated Dec 2015-->
-<link rel="stylesheet" href="/assets/cssjs/easy-button/easy-button.css" />
-<script src="/assets/cssjs/easy-button/easy-button.js"></script>
+<link rel="stylesheet" href="assets/cssjs/easy-button/easy-button.css" />
+<script src="assets/cssjs/easy-button/easy-button.js"></script>
 <!--Leaflet sidebar v1 aka menu -->
-<link rel="stylesheet" href="/assets/cssjs/L.Control.Sidebar.css" />
-<script src="/assets/cssjs/L.Control.Sidebar.js"></script>
+<link rel="stylesheet" href="assets/cssjs/L.Control.Sidebar.css" />
+<script src="assets/cssjs/L.Control.Sidebar.js"></script>
 <!-- leaflet loading and leaflet-spin works with leaflet ajax and map tiles -->
-<link rel="stylesheet" href="/assets/cssjs/Control.Loading.css" />
-<script src="/assets/cssjs/Control.Loading.js"></script>
-<script src="/assets/cssjs/spin.js"></script>
-<script src="/assets/cssjs/leaflet.spin.js"></script>
-<script src="/assets/cssjs/google.js"></script>
-<script src="/assets/cssjs/gglegrey.js"></script>
+<link rel="stylesheet" href="assets/cssjs/Control.Loading.css" />
+<script src="assets/cssjs/Control.Loading.js"></script>
+<script src="assets/cssjs/spin.js"></script>
+<script src="assets/cssjs/leaflet.spin.js"></script>
+<script src="assets/cssjs/google.js"></script>
+<script src="assets/cssjs/gglegrey.js"></script>
 <!--Mapbox fullscreen standalone js added in ovrdc-toolbar-->
 <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css' rel='stylesheet' />
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
 <!--OVRDC Custom Styles-->
-<link rel="stylesheet" href="/assets/ovrdc-css/ovrdc-style.css" />
-<link rel="stylesheet" href="/assets/ovrdc-css/modern-ui.css" />
+<link rel="stylesheet" href="assets/ovrdc-css/ovrdc-style.css" />
+<link rel="stylesheet" href="assets/ovrdc-css/modern-ui.css" />
 <!--End Leaflet Plugins-->
 <!--End Map CSS and JS-->
 <!--end plugins-->
 </head>
 <style>*{font-family: "Open Sans", sans-serif;}</style>
 <body>
+<!--GeoJson Tile Scripts-->
 <script src="assets/cssjs/geojson-tiles/geojson-vt-dev.js"></script>
 <script src="assets/cssjs/geojson-tiles/L.CanvasTiles.js"></script>
 <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-pip/v0.1.0/leaflet-pip.min.js'></script>
+<!--Loading Screen-->
 <div class="blank"><h2 class="animate-flicker" style="text-align:center;margin-top:50px;">Loading...</h2></div>
 <div id='map'>
 <div id="sidebar">
-	<h2 style="font-family:Archivo Black, sans-serif;">GeoJson Tile Test Map: Gallia County</h2>
+	<h2 style="font-family:Archivo Black, sans-serif;">{{ page.title }}</h2>
 	<hr />
-	This map demonstrates the capability of <a href="http://leafletjs.com/" target="blank">Leaflet</a> to render thousands of polygons using <a href="https://www.mapbox.com/blog/introducing-geojson-vt/" target="_blank">GeoJson Tiles</a> on both desktop and mobile devices. Rendering, search and identify are handled by the browser, so there is no need for GeoServer/ArcGIS Server, etc., to push data to the client. The original shapefile was converted to topojson using <a href="http://www.mapshaper.org/" target="_blank">mapshaper</a>, and the geojson-vt plugin provides some simplification. To identify the underlying polygons, the <a href="https://www.mapbox.com/mapbox.js/example/v1.0.0/point-in-polygon/" target="_blank">point in polygon</a> plugin is used. Parcels with null parcel and owner fields have been removed.
+  {{ page.description }}
 	<hr />
-	<strong>Use zoom controls to navigate the map. Pinch & zoom and double tap to zoom have been disabled.</strong>
+	<strong>{{ page.notes }}</strong>
 	<hr />
-	<em>The parcels shown are for demonstration purposes only and are not intended to represent legal boundaries and/or current ownership.</em>
-<div>
-  <hr />
-  <button id="showTools" type="button" class="btn btn-default btn-xs btn-block">Show Map Tools Legend</button>
-  <button id="hideTools" type="button" class="btn btn-default btn-xs btn-block" style="display:none;">Hide Map Tools Legend</button>
-  <div class="toolLegend" style="display:none;">
-    <hr />
-    <div class="list-group" style="text-align:left;">
-      <li class="list-group-item"><i class='fa fa-bars fa-fw fa-lg'></i> Open Sidebar</li>
-      
-      <li class="list-group-item"><i class='fa fa-exchange fa-fw fa-lg'></i> Toggle Address Search</li>
-      
-      
-      <li class="list-group-item"><img src="/assets/images/fullscreen-img.png" style="padding:0 1px;width:22px;"></img> Fullscreen</li>
-      
-      <li class="list-group-item"><i class='fa fa-globe fa-fw fa-lg'></i> Default Map Extent</li>
-      <li class="list-group-item"><i class='fa fa-map-marker fa-fw fa-lg'></i> Show/Follow Your Location</li>
-      
-      <li class="list-group-item"><i class='fa fa-cogs fa-fw fa-lg'></i> Toggle Map Tools (Mobile Only)</li>
-      <li class="list-group-item"><img src="/assets/cssjs/images/layers-bl.png" style="padding:0 1px;width:22px;"></img> Toggle Map Layers</li>
-      
-    </div>
-  </div>
-  <hr />
-</div>
-<script>
-$("#showTools").click(function() {
-  $(".toolLegend").toggle();
-  $("#showTools").toggle();
-  $("#hideTools").toggle();
-});
-$("#hideTools").click(function() {
-  $(".toolLegend").toggle();
-  $("#showTools").toggle();
-  $("#hideTools").toggle();
-});
-</script>
-
-  <h6><a href='http://www.ovrdc.org' target='_blank' style='text-decoration:none;'>OVRDC</a> | Map data updated 12/2015.</h6>
+	<em>{{ page.legal }}</em>
+{% include map-tool-legend.html %}
+  <h6><a href='{{ site.baseurl }}' target='_blank' style='text-decoration:none;'>{{ site.title }}</a> | Map data updated {{ page.date | date: "%m/%-d/%Y" }}</h6>
 </div>
 </div>
 <script>
@@ -207,12 +170,12 @@ var light = cdblight;
 var dark = cdbdark;
 var transit = thundertransport;
 var basemaps = {
-  "<div class='layers-control-img'><img src='/assets/images/layer-control-images/osm-streets.png'></div> Streets": osm,
-  "<div class='layers-control-img'><img src='/assets/images/layer-control-images/mapbox-ortho.png'></div> Satellite": ortho,
-  "<div class='layers-control-img'><img src='/assets/images/layer-control-images/esri-topo.png'></div> Topography": esritopo,
-  "<div class='layers-control-img'><img src='/assets/images/layer-control-images/transit.png'></div> Transit": transit,
-  "<div class='layers-control-img'><img src='/assets/images/layer-control-images/cdb-light.png'></div> Grayscale": cdblight,
-  "<div class='layers-control-img'><img src='/assets/images/layer-control-images/cdb-dark.png'></div> Dark Matter": cdbdark,
+  "<div class='layers-control-img'><img src='assets/images/layer-control-images/osm-streets.png'></div> Streets": osm,
+  "<div class='layers-control-img'><img src='assets/images/layer-control-images/mapbox-ortho.png'></div> Satellite": ortho,
+  "<div class='layers-control-img'><img src='assets/images/layer-control-images/esri-topo.png'></div> Topography": esritopo,
+  "<div class='layers-control-img'><img src='assets/images/layer-control-images/transit.png'></div> Transit": transit,
+  "<div class='layers-control-img'><img src='assets/images/layer-control-images/cdb-light.png'></div> Grayscale": cdblight,
+  "<div class='layers-control-img'><img src='assets/images/layer-control-images/cdb-dark.png'></div> Dark Matter": cdbdark,
 };
 
 //--show google imagery at higher zoom levels
@@ -243,7 +206,7 @@ console.log('start map toolbar');
 //OVRDC Modern UI Toolbar
 //OVRDC New marker
 var ovrdcMarker = L.icon({
-    iconUrl: '/assets/images/ovrdc-marker.png',
+    iconUrl: 'assets/images/ovrdc-marker.png',
     //shadowUrl: 'leaf-shadow.png',
 
     iconSize:     [48, 48], // size of the icon
@@ -485,7 +448,7 @@ var pikeParcels = L.geoJson(null, {
   },
 	style: {color:'yellow'}
 });
-var tileData = omnivore.topojson("/assets/data/parcels/gallia-parcels.topojson", null, pikeParcels);
+var tileData = omnivore.topojson("assets/data/parcels/gallia-parcels.topojson", null, pikeParcels);
 var search;
 tileData.on('ready', function() {
   console.log('parcel data ready');
