@@ -126,11 +126,6 @@
       maxNativeZoom: 20,
     });
 
-    var ggle = new L.Google('HYBRID', {
-      maxZoom: 20,
-      maxNativeZoom: 20,
-    });
-
     var stamentoner = new L.tileLayer.provider('Stamen.Toner');
     var stamentonerlight = new L.tileLayer.provider('Stamen.TonerLite');
     var watercolor = L.tileLayer('//stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png', {
@@ -147,6 +142,11 @@
       maxNativeZoom: 19,
       maxZoom: 22,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    });
+
+    var ggle = new L.Google('HYBRID', {
+      maxZoom: 20,
+      maxNativeZoom: 20,
     });
 
     var cdblight = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
