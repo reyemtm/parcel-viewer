@@ -26,6 +26,7 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
  - Add an option to add/remove more/other tools to/from the toolbar
  - Convert the toolbar from using leaflet-top leaflet-left to a new customized leaflet control
  - Documentation on the various options in geojson-vt and the drawing on canvas function
+ - Add real support for multiple field search - possibly using fuse or typehead (like Leaflet Bootstrap)
 
 ##Issues
  - Past zoom level 18 the parcels disappear - this is an upstream issue with geojson-vt
