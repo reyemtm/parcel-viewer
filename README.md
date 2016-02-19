@@ -9,7 +9,7 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
  - Sidebar, fullscreen, location, printing (using browser print dialog)
  - Render up to (approx) 50k parcels
  - Customized layer control with thumbnails
- - Performance is similar on mobile and desktop
+ - Similar performance on mobile and desktop
 
 ##Requirements
  - Data in topojson format - see [mapshaper](http://mapshaper.org)
