@@ -128,7 +128,7 @@ background: transparent;
   }
 	.leaflet-top.leaflet-right {
 		top: 0px;
-    z-index: 999;
+    z-index: 9999;
 	}
 }
 /*end media queries*/
