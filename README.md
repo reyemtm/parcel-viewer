@@ -4,7 +4,7 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
 
 ##Features
  - Search by any field or multiple fields, such as Name or Parcel ID
- - Sidebar, fullscreen, location, printing (using browser print dialog), 
+ - Sidebar, fullscreen, location, printing (using browser print dialog)
  - The app can handle up to approx 50k parcel features
 
 ##Requirements
