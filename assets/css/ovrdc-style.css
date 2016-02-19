@@ -4,7 +4,7 @@
 }
 .leaflet-control-layers-toggle,
 .leaflet-touch .leaflet-control-layers-toggle {
-  background-image: url(../cssjs/images/layers-bl.png);
+  background-image: url(../images/layers-bl.png);
   background-size: 80%;
   margin-top: 0px;
 	width:36px;
