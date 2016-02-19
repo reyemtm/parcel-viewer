@@ -5,15 +5,17 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
 ![Parcel Viewer](assets/images/parcel-img.png)
 
 ##Features
- - Search by any field or multiple fields, such as Name or Parcel ID
+ - Search by any field or multiple fields, such as Name and/or Parcel ID
  - Sidebar, fullscreen, location, printing (using browser print dialog)
- - The app can handle up to approx 50k parcel features
+ - Render up to (approx) 50k parcels
+ - Customized layer control with thumbnails
+ - Performance is similar on mobile and desktop
 
 ##Requirements
- - Data in topojson format
- - A string field in the data titled 'index' to house the searchable attributes with a separator - see the example
- - Jekyll or download the zip file and build the index page manually
- - A free Mapbox API key for using the Mapbox imagery (not needed, the esri imagery could be used instead)
+ - Data in topojson format - see [mapshaper](http://mapshaper.org)
+ - A string field in the data titled 'index' to house the searchable attributes (with a separator - see the example)
+ - Jekyll (or download the zip file and build the index page manually)
+ - A free Mapbox API key for using the Mapbox imagery (not necessary, the esri imagery could be used instead)
  - A (free) web server such as GitHub, surge.sh, others...
 
 ##Upgrades - Please Contribute
@@ -21,12 +23,16 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
  - Convert from L.Canvas to L.GridLayer to be compatible with Leaflet 1.0
  - Make an option for using vector tiles styled in Mapbox
  - Create a function to automatically split the index field and push all the index 'fields' to the popup or the sidebar
- - Add more/other tools to the toolbar
- - Convert the toolbar from using leaflet-top leaflet-left to creating a new customized leaflet control
+ - Add an option to add/remove more/other tools to/from the toolbar
+ - Convert the toolbar from using leaflet-top leaflet-left to a new customized leaflet control
+ - Documentation on the various options in geojson-vt and the drawing on canvas function
 
 ##Issues
  - Past zoom level 18 the parcels disappear - this is an upstream issue with geojson-vt
  - Pinch and zoom on touch devices causes strange behavior so it is disabled, use the zoom buttons (behind the sidebar) instead
- - Zoom animations have been limited to 2 zoom levels
+ - Zoom animations have been limited to 2 zoom levels for better performance
+
+##Thanks
+This app relies on a variety of plugins, but most importantly on the work of [mourner](https://github.com/mourner), [Sumbera](https://github.com/Sumbera) and [Stephano Cudini](https://github.com/stefanocudini/).
 
 This app is powered by Jekyll.
