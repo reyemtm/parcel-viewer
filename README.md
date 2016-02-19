@@ -33,6 +33,6 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
  - Zoom animations have been limited to 2 zoom levels for better performance
 
 ##Thanks
-This app relies on a variety of plugins, but most importantly on the work of [mourner](https://github.com/mourner), [Sumbera](https://github.com/Sumbera) and [Stephano Cudini](https://github.com/stefanocudini/).
+This app relies on a variety of plugins, but most importantly on the work of [mourner](https://github.com/mourner), [Sumbera](https://github.com/Sumbera), [Stephano Cudini](https://github.com/stefanocudini/) and [Matthew Bloch](https://github.com/mbloch).
 
 This app is powered by Jekyll.
