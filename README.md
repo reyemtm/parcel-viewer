@@ -2,6 +2,8 @@
 
 This open data parcel viewer is a client-side app that uses Leaflet to render a whole county parcel map without the need for a GIS server. 
 
+![Parcel Viewer](assets/images/parcel-img.png)
+
 ##Features
  - Search by any field or multiple fields, such as Name or Parcel ID
  - Sidebar, fullscreen, location, printing (using browser print dialog)
