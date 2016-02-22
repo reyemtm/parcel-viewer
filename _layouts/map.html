@@ -646,7 +646,7 @@
     if(map.getZoom() < 14) {
       map.setZoomAround(map.getCenter(), 14);
     }
-    $("#mapLegend").html("<img src='data/nfhl.png />");
+    $("#mapLegend").html("<img src='data/nfhl.png' />");
   });
   map.on('overlayeremove', function() {
     $("#mapLegend").html("");
