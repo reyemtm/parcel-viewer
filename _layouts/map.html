@@ -52,6 +52,8 @@
   <!--Mapbox fullscreen standalone js added in ovrdc-toolbar-->
   <link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.4/leaflet.fullscreen.css' rel='stylesheet' />
   <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+  <!--Esri Leaflet Core for AGOL layers -->
+  <script src="//cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
   <!--OVRDC Custom Styles-->
   <link rel="stylesheet" href="assets/css/ovrdc-style.css" />
   <link rel="stylesheet" href="assets/css/modern-ui.css" />
@@ -612,6 +614,18 @@
       };
 
     });
+  var nfhl = L.esri.dynamicMapLayer({
+    url: '//hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer/28',
+    opacity: 0.5,
+  });
+  nfhl.bindPopup(function (error, featureCollection) {
+    if(error || featureCollection.features.length === 0) {
+      return false;
+    } else {
+      return featureCollection.features[0].properties.FLD_ZONE;
+    }
+  });
+  layerControl.addOverlay(nfhl, "Flood Hazard");
   </script>
 </body>
 </body>
