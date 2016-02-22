@@ -12,14 +12,14 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
  - Similar performance on mobile and desktop
 
 ##Requirements
- - Data in topojson format - see [mapshaper](http://mapshaper.org)
+ - Data in topojson format, stored in the data folder - see [mapshaper](http://mapshaper.org)
  - A string field in the data titled 'index' to house the searchable attributes (with a separator - see the example)
  - Jekyll (or download the zip file and build the app manually)
  - A free Mapbox API key for using the Mapbox imagery (not necessary, the esri imagery could be used instead)
  - A (free) web server such as GitHub, surge.sh, others...
 
 ##Upgrades - Contributions Welcome
- - Create a Node build of the app
+ - Create an npm package for the js dependencies
  - Convert from L.TileLayer.Canvas to L.GridLayer to be compatible with Leaflet 1.0
  - Make a Jekyll option for using vector tiles styled in Mapbox
  - Create a function to automatically split the index field and push all the index 'fields' to the popup or the sidebar
