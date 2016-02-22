@@ -467,20 +467,6 @@
     sidebar.on('hide', function() {
       customZoom.addTo(map);
     });
-    //--flood--//
-  var nfhl = L.esri.dynamicMapLayer({
-    url: '//hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer/28',
-    opacity: 0.5,
-  });
-  nfhl.bindPopup(function (error, featureCollection) {
-    if(error || featureCollection.features.length === 0) {
-      return false;
-    } else {
-      return featureCollection.features[0].properties.FLD_ZONE;
-    }
-  });
-  layerControl.addOverlay(nfhl, "Flood Hazard");
-  //--end--//
     var parcels = L.geoJson();
     var tileData = omnivore.topojson("data/{{ page.data }}", null, parcels);
     var search;
@@ -628,6 +614,21 @@
       };
 
     });
+  //--flood--//
+  var nfhl = L.esri.dynamicMapLayer({
+    url: '//hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer',
+    layers: [28],
+    opacity: 0.5,
+  });
+  nfhl.bindPopup(function (error, featureCollection) {
+    if(error || featureCollection.features.length === 0) {
+      return false;
+    } else {
+      return featureCollection.features[0].properties.FLD_ZONE;
+    }
+  });
+  layerControl.addOverlay(nfhl, "Flood Hazard");
+  //--end--//
   </script>
 </body>
 </body>
