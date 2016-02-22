@@ -631,7 +631,7 @@
 */
   layerControl.addOverlay(nfhl, "Flood Hazard");
   //--end--//
-  map.on('layeradd', function() {
+  map.on('overlayadd', function() {
     if(map.getZoom < 14) {
       map.setZoomAround(map.getCenter(), 14);
     }
