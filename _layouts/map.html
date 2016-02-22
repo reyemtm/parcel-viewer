@@ -620,13 +620,15 @@
     layers: [28],
     opacity: 0.5,
   });
-  nfhl.bindPopup(function (error, featureCollection) {
+/*//--Popup is too slow to respond plus the layer is labeled--//
+    nfhl.bindPopup(function (error, featureCollection) {
     if(error || featureCollection.features.length === 0) {
       return false;
     } else {
       return featureCollection.features[0].properties.FLD_ZONE;
     }
   });
+*/
   layerControl.addOverlay(nfhl, "Flood Hazard");
   //--end--//
   </script>
