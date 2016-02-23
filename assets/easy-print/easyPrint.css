@@ -15,6 +15,10 @@
   .leaflet-sidebar {
     display: none;
   }
+  .leaflet-popup-content-wrapper,
+  .leaflet-popup-tip {
+	background: white!important;
+	}
   .leaflet-marker-icon, .marker-cluster {
     display: block!important;
   }
