@@ -9,20 +9,4 @@
 @media print {
 	html {padding: 0px!important;}
 	.leaflet-control-easyPrint-button{display: none!important;}
-  .leaflet-top.leaflet-left{
-    display: none!important;
-  }
-  .leaflet-sidebar {
-    display: none;
-  }
-  .leaflet-popup-content-wrapper,
-  .leaflet-popup-tip {
-	background: white!important;
-	}
-  .leaflet-marker-icon, .marker-cluster {
-    display: block!important;
-  }
-  body *{
-  -webkit-print-color-adjust: exact!important;
-  }
 }
