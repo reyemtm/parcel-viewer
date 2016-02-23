@@ -1,3 +1,22 @@
+/*For printing using easy-print*/
+@media print {
+	.leaflet-top.leaflet-left{
+		display: none!important;
+	}
+	.leaflet-sidebar {
+		display: none;
+	}
+	.leaflet-popup-content-wrapper,
+	.leaflet-popup-tip {
+		background: white!important;
+	}
+	.leaflet-marker-icon, .marker-cluster {
+		display: block!important;
+	}
+	body *{
+		-webkit-print-color-adjust: exact!important;
+	}
+}
 /*layer control images*/
 .leaflet-right .leaflet-control {
   box-shadow: 0 0 7px #999;
