@@ -29,7 +29,7 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
  - Add real support for multiple field search - possibly using fuse or typehead (like Leaflet Bootstrap)
 
 ##Issues
- - Past zoom level 18 the parcels disappear - this is an upstream issue with geojson-vt
+ - ~~Past zoom level 18 the parcels disappear - this is an upstream issue with geojson-vt~~ Fixed 04/2016 - The default maxZoom for L.tileLayer.canvas (and L.tileLayer) is 18. In the L.CanvasTiles.js this has been changed to 22.
  - Pinch and zoom on touch devices causes strange behavior so it is disabled, use the zoom buttons (behind the sidebar) instead
  - Zoom animations have been limited to 2 zoom levels for better performance
 
