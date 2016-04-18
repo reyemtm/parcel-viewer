@@ -23,6 +23,7 @@ L.CanvasTiles =  L.TileLayer.Canvas.extend({
     },
 
     params: function (options) {
+        this.options.maxZoom = 22;
         L.setOptions(this, options);
         return this;
     },
