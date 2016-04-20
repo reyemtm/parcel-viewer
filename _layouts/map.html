@@ -101,6 +101,7 @@
     </div>
   </div>
   <script>
+    var timeStart = performance.now();
     var map = L.map('map', {
       zoomControl: false,
       maxZoom: 20,
@@ -558,6 +559,8 @@
         indexMaxPoints: 100000, // 100000 max number of points per tile in the index
       };
       var data = parcels.toGeoJSON();
+      var timeEnd = (performance.now() - timeStart)/1000;
+      $('#mapLegend').html('32,329 Polygons loaded in ' + timeEnd.toFixed(2) + ' seconds')
       var tileIndex = geojsonvt(data, tileOptions);
       //take json output from geojson-vt and draw it with the now depricated (in leaflet-beta) L.canvasTiles and code from here - http://blog.sumbera.com/2015/05/31/geojson-vt-on-leaflet/
       var tileLayer = L.canvasTiles().params({
