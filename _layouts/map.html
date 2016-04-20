@@ -560,7 +560,7 @@
       };
       var data = parcels.toGeoJSON();
       var timeEnd = (performance.now() - timeStart)/1000;
-      $('#mapLegend').html('<span style="color:red;font-weight:600px;32,329 Polygons loaded in ' + timeEnd.toFixed(2) + ' seconds</span><hr />')
+      $('#mapDescription').append('<span style="color:red;font-weight:600px;">32,329 Polygons loaded in ' + timeEnd.toFixed(2) + ' seconds</span><hr />')
       var tileIndex = geojsonvt(data, tileOptions);
       //take json output from geojson-vt and draw it with the now depricated (in leaflet-beta) L.canvasTiles and code from here - http://blog.sumbera.com/2015/05/31/geojson-vt-on-leaflet/
       var tileLayer = L.canvasTiles().params({
