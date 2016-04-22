@@ -1,4 +1,5 @@
-##[OVRDC](http://www.ovrdc.org) Open Parcel Viewer
+##OVRDC Open Parcel Viewer
+####An [OVRDC App Template](https://ovrdc.github.io)
 
 This open data parcel viewer is a client-side app that uses Leaflet to render a whole county parcel map without the need for a GIS server. Try out the [demo](https://ovrdc.github.io/parcel-viewer/).
 
@@ -37,3 +38,5 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
 This app relies on a variety of plugins, but most importantly on the work of [mourner](https://github.com/mourner), [Sumbera](https://github.com/Sumbera), [Stephano Cudini](https://github.com/stefanocudini/) and [Matthew Bloch](https://github.com/mbloch).
 
 This app is powered by Jekyll.
+
+[Ohio Valley Regional Development Commission Homepage](http://www.ovrdc.org)
