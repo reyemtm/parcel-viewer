@@ -1,4 +1,4 @@
-##OVRDC Open Parcel Viewer
+##Open Parcel Viewer
 ####An [OVRDC App Template](https://ovrdc.github.io)
 
 This open data parcel viewer is a client-side app that uses Leaflet to render a whole county parcel map without the need for a GIS server. Try out the [demo](https://ovrdc.github.io/parcel-viewer/).
