@@ -151,6 +151,9 @@ background: transparent;
   /*background-color: #fff;*/
 }
 .leaflet-top.leaflet-left {
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-box;
     display: inline-flex;
     direction: rtl;
     position: absolute;
