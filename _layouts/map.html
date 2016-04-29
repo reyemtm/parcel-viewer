@@ -101,7 +101,7 @@
     </div>
   </div>
   <script>
-    if (performance.now()) {
+    if (performance.now) {
     var timeStart = performance.now();
     }else{
       var timeStart = Date.now()
@@ -563,7 +563,7 @@
         indexMaxPoints: 100000, // 100000 max number of points per tile in the index
       };
       var data = parcels.toGeoJSON();
-      if (performance.now()) {
+      if (performance.now) {
         var timeEnd = (performance.now() - timeStart)/1000;
       }else{
         var timeEnd = (Date.now() - timeStart)/1000;
