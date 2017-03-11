@@ -470,15 +470,9 @@
     //end OVRDC Modern UI Toolbar
 
     var customZoom = L.control.zoom({
-      position: 'topleft'
+      position: 'topright'
     }).addTo(map);
     ortho.addTo(map);
-    sidebar.on('show', function() {
-      map.removeControl(customZoom)
-    });
-    sidebar.on('hide', function() {
-      customZoom.addTo(map);
-    });
     var parcels = L.geoJson();
     var tileData = omnivore.topojson("data/{{ page.data }}", null, parcels);
     var search;
