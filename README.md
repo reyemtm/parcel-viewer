@@ -1,3 +1,7 @@
+## Update 7/23/17
+
+This app uses geojson-vt to cut vector tiles on the fly. Users might want to simply use Mapbox GL JS which uses geojson-vt natively, however Mapbox GL JS API does not have search capabilities built in for anything not rendered in the browser window, so those would have to be added separately.
+
 ##Open Parcel Viewer
 ####An [OVRDC App Template](https://ovrdc.github.io)
 
