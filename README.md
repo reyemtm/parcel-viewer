@@ -9,6 +9,9 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
 
 ![Parcel Viewer](assets/images/parcel-img.png)
 
+## Sites Using the Open Parcel Viewer
+ - [Scott Township - Lackawanna County, Pa.](http://scotttownship.gisassetmanager.com/)
+
 ## Features
  - Search by any field or multiple fields, such as Name and/or Parcel ID
  - Sidebar, fullscreen, location, printing (using browser print dialog)
