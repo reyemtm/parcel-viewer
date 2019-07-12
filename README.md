@@ -3,9 +3,8 @@
 This app uses geojson-vt to cut vector tiles on the fly. There will be an update soon that uses Leaflet 1.0. Users might also want to use Mapbox GL JS which uses geojson-vt natively, however Mapbox GL JS API does not have search capabilities built in for anything not rendered in the browser window, so those would have to be added separately.
 
 ## Open Parcel Viewer
-#### An [OVRDC App Template](https://ovrdc.github.io)
 
-This open data parcel viewer is a client-side app that uses Leaflet to render a whole county parcel map without the need for a GIS server. Try out the [demo](https://ovrdc.github.io/parcel-viewer/). This app also includes the modern-ui custom OVRDC style for the search bar and layer control.
+This open data parcel viewer is a client-side app that uses Leaflet to render a whole county parcel map without the need for a GIS server. Try out the [demo](https://reyemtm.github.io/parcel-viewer/). This app also includes my modern-ui custom style for the search bar and layer control.
 
 ![Parcel Viewer](assets/images/parcel-img.png)
 
@@ -45,5 +44,3 @@ This open data parcel viewer is a client-side app that uses Leaflet to render a 
 This app relies on a variety of plugins, but most importantly on the work of [mourner](https://github.com/mourner), [Sumbera](https://github.com/Sumbera), [Stephano Cudini](https://github.com/stefanocudini/) and [Matthew Bloch](https://github.com/mbloch).
 
 This app is powered by Jekyll.
-
-[Ohio Valley Regional Development Commission Homepage](http://www.ovrdc.org)
